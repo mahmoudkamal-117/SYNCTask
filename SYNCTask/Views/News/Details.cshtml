@@ -1,0 +1,68 @@
+﻿@model SYNCTask.Models.New
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            <img src="~/Images/@Url.Content(Model.Image)" style="margin:10px" height="200" width="200" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublicationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublicationDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author.Name)
+        </dd>
+
+        
+
+    </dl>
+</div>
+<p>
+    
+    @Html.ActionLink("Back to List", "Index","Home")
+</p>

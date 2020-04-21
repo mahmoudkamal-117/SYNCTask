@@ -1,0 +1,141 @@
+﻿body {
+    padding-top: 90px;
+    padding-bottom: 20px;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: Lato,"Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size:medium;
+  color: black;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+.form-control{
+    font-size:17px;
+   height:44px;
+    -ms-border-radius:9px;
+    border-radius:9px;
+}
+.form-control:focus{
+    border-color:#2196f3;
+    box-shadow:none;
+    -webkit-box-shadow:none;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+span.field-validation-error {
+    font-weight: bold;
+    color: red;
+    
+}
+.dropdown-menu{
+    box-shadow:none;
+    -webkit-box-shadow:none;
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a .caret{
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+}
+.navbar-brand{
+    font-weight:700;
+}
+.navbar-inverse {
+    background-color:#5b9cd2;
+    border-color: #5b9cd2;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    
+    background-color: rgba(148, 153, 214, 0.55);
+}
+
+.jumbotron .gallary{
+   
+    max-width: 778px;
+    margin-bottom:50px;
+    margin-left: 100px;
+    background-color:#fff;
+}
+.jumbotron .headnews{
+    text-align:center;
+}
+.thumbnail >img {
+    display: block;
+    height: auto;
+    max-width: 50%;
+}
+.thumbnail .caption >h2{
+        font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-family: monospace;
+}
+.gigs{
+    list-style:none;
+}
+.gigs > li{
+    position:relative;
+    margin-bottom:30px;
+
+}
+.gigs > li .date {
+    background: #64afed;
+    color:white;
+    text-align:center;
+    width:400px;
+    -ms-border-radius:8px;
+    border-radius:8px;
+}
+.gigs > li .month{
+    text-transform:uppercase;
+    font-size:14px;
+    font-weight:bold;
+    padding:2px 6px;
+}
+.gigs > li .day{
+    background:rgba(189, 192, 239, 0.55);
+    color:#333;
+    font-size:20px;
+    padding:6px 12px;
+}
+.button{
+        margin-bottom: 16px;
+}
+}

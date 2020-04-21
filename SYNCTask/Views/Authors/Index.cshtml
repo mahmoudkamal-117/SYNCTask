@@ -1,0 +1,80 @@
+﻿@model IEnumerable<SYNCTask.Models.Author>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 class="alert alert-info">Authors</h2>
+    <div class="button">
+        
+        <a class="btn btn-info" href="@Url.Action("Create","Authors")">Add Author</a>
+    </div>
+
+
+<table id="authors" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            
+            <th style="width:250px;">EditOrDelete</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts
+{
+
+    <script>
+        $(document).ready(function () {
+
+          var table= $("#authors").DataTable({
+                ajax: {
+                    url:"/api/Authors",
+                    dataSrc:""
+                },
+                columns: [
+                    {
+                        data: "Name",
+                      
+                    },
+                    {
+                        data: "Id",
+                        render: function (data) {
+                            return " <button class='btn btn-danger js-delete'data-author-id=" + data + "><i class='glyphicon glyphicon-trash' >Delete</i></button> <a  class='btn btn-success'href='/Authors/edit/" + data + "'><i class='glyphicon glyphicon-pencil'>Edit</i></a>  ";
+
+                            //</button> <a  class='btn btn-success'href='/Authors/Edit/" +author.id + "'><i class='glyphicon glyphicon-pencil'>Edit</i></a>
+                            //render: function (data, type, author) {
+                            //    return "<a href='/Authors/Edit/" + author.id + "'>" + authors.Name + "</a>";
+                            //}
+                        }
+                    }
+
+                ]
+
+            });
+            $("#authors").on("click", ".js-delete", function () {
+                var button = $(this);
+                bootbox.confirm("Are you sure you want to delete this?!", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/Authors/"+ button.attr("data-author-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+
+                    }
+                });
+
+
+            });
+
+        });
+
+
+    </script>
+
+}

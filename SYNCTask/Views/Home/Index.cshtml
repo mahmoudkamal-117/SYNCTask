@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SYNCTask.Models.New>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<ul class="gigs">
+    <div class="jumbotron">
+        <h1>Hello, to our News paper</h1>
+        <p>Here you can find new about the world</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+    </div>
+
+    @foreach (var news in Model)
+        {
+    <li>
+         <div class="date">
+            <div class="month">
+                <a href="@Url.Action("Details","News",new { id=news.Id})"><img src="~/Images/@Url.Content(news.Image)" class="img-thumbnail"></a>
+            </div>
+            <div class="day">
+                <a href="@Url.Action("Details","News",new { id=news.Id})"><h3> @news.Title</h3></a>
+            </div>
+        </div>
+    </li>
+       
+    
+        
+    }
+</ul>
+
+
+
+    
+
+
+    
+    @*<div class="jumbotron">
+        <h1>Hello, to our News paper</h1>
+        <p>Here you can find new about the world</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+    </div>
+
+    <div class="jumbotron ">
+        @foreach (var news in Model)
+        {
+
+            <div class=" gallary">
+                <a href="@Url.Action("Details","News",new { id=news.Id})"><img src="~/Images/@Url.Content(news.Image)" class="img-thumbnail"></a>
+
+                <a href="@Url.Action("Details","News",new { id=news.Id})"><h3 class="alert alert-info" style="text-align:center"><strong>@news.Title</strong></h3></a>
+
+
+            </div>
+
+
+
+
+
+
+
+
+        }
+    </div>*@

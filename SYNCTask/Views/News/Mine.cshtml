@@ -1,0 +1,103 @@
+﻿@model IEnumerable<SYNCTask.Models.New>
+@{
+    ViewBag.Title = "Mine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="alert alert-info" style="text-align:center; font-size:x-large;">My News</h2>
+<ul class="gigs">
+    
+    @foreach (var news in Model)
+    {
+        <li>
+            <div class="date">
+                <div class="month">
+                    <a href="@Url.Action("Details","News",new { id=news.Id})"><img src="~/Images/@Url.Content(news.Image)" class="img-thumbnail"></a>
+                </div>
+                <div class="day">
+                    <a href="@Url.Action("Details","News",new { id=news.Id})"><h3> @news.Title</h3></a>
+                    <a class="btn btn-primary " href="@Url.Action("Edit", "News", new {id=news.Id })">Edit</a>
+                    <a class="btn btn-danger js-delete-news" data-news-id="@news.Id">Delete</a>
+                </div>
+            </div>
+        </li>
+
+
+
+    }
+</ul>
+
+@*<div class="jumbotron ">
+    @foreach (var news in Model)
+    {
+
+        <div class=" gallary">
+            <a href="#"><img src="~/Images/@Url.Content(news.Image)" class="img-thumbnail"></a>
+            <div class="alert alert-info">
+                <a href="#"><h3 >@news.Title</h3></a>
+                <a class="btn btn-primary " href="@Url.Action("Edit", "News", new {id=news.Id })">Edit</a>
+                <a class="btn btn-danger js-delete-news" data-news-id="@news.Id" >Delete</a>
+            </div>
+            
+
+        </div>
+
+
+
+
+
+
+
+
+    }
+</div>*@
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            $(".js-delete-news").click(function (e) {
+
+                var Link = $(e.target);
+                bootbox.dialog({
+                    title: "Confirm",
+                    message: "Are you sure you want to ]Delete this  ?",
+
+                    buttons: {
+                        No: {
+                            label: "No",
+                            className: 'btn-default',
+                            callback: function () {
+                                bootbox.hideAll();
+                            }
+                        },
+                        yes: {
+                            label: "Yes",
+                            className: 'btn-danger',
+                            callback: function () {
+                                $.ajax({
+                                    url: "/api/News/" + Link.attr("data-news-id"),
+                                    method: "DELETE"
+                                })
+                                  .done(function () {
+
+                                      Link.parents("li").fadeOut(function () {
+                                          $(this).remove();
+                                      });
+                                  })
+                                  .fail(function () {
+                                      alert("somthing fail");
+                                  });
+                            }
+                        }
+
+
+                    }
+                });
+
+
+
+
+            });
+        });
+    </script>
+}
